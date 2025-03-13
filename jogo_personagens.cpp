@@ -25,8 +25,9 @@ class FormaDeVida {
     void setForca(int f) { if(f >= 0 && f <= 100) forca = f; }
     int getForca() { return forca; }
 
-    void ataque(float multiplicador ){
-        cout << getNome() << " ataca com força " << 10 * multiplicador << "!\n";
+    string ataque(float multiplicador ){
+      cout << getNome() << " ataca com força " << 10 * multiplicador << "!\n";
+    }
 };
 
 // Classe para personagens humanos com diálogo

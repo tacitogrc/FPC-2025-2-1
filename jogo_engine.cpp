@@ -130,12 +130,7 @@ int roll_dice (int dice_num)
 
     case 20:
         srand(time(0));
-        dice_num = rand() % d20+1;   
-        if (dice_num == d20)
-        {
-            cout<<"CRITICAL HIT! \n";
-            crit = true;
-        }     
+        dice_num = rand() % d20+1;       
         break;
         
     case 100:

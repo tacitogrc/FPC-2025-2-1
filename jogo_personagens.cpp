@@ -18,7 +18,7 @@ class FormaDeVida {
     void setNome(string n) { nome = n; }
     string getNome() { return nome; }
     
-    void setVida(int v) { if(v >= 0 && v <= 100) vida = v; }
+    void setVida(int v) { if(v >= 0 && v <= 100) vida = v; else if(v > 100) vida = 100; }
     int getVida() { return vida; }
     
     void setForca(int f) { if(f >= 0 && f <= 100) forca = f; }

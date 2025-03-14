@@ -368,12 +368,9 @@ snd  '._/_)_(\__.'   (__,(__,_]
             )";
             
             // Cadastra as cenas utilizando as ASCII arts definidas
-            Scene scene1(asciiArts["intro"], "Em um reino muito distante chamado Exandria uma bruxa muito má estava selada em uma rocha e após 100 anos o selo enfraqueceu e ela se libertou...
-
-Após se libertar, a Bruxa voou em direção ao reino de Exandria que era comandado pelos descendentes daqueles que a selaram, chegando lá ela percebeu que estava ocorrendo um festival, onde os Reis e rainhas de todos os reinos se reuniam para celebrar a paz entre eles, aproveitando essa oportunidade a bruxa esperou o momento em que o rei e rainha do reino anfitrião apareceriam para declarar inicio ao festival e os matou na frente de todos, declarando guerra ao todos os reinos e avisando para se preparem que voltaria para destruir todos os reinos um a um e saiu. A filha do rei e rainha que foram mortos pela Bruxa, a princesa Fiona, presenciou todo o assassinato e a declaração de guerra e se enfureceu...
-
-Você foi convocado para fazer parte do exercito que deseja derrotar a bruxa, você aceita o desafio? < S | N >");
-            scene1.addChoice("Ir para a floresta", 2);
+            Scene scene1(asciiArts["intro"], "Em um reino muito distante chamado Exandria uma bruxa muito má estava selada em uma rocha e após 100 anos o selo enfraqueceu e ela se libertou...Após se libertar, a Bruxa voou em direção ao reino de Exandria que era comandado pelos descendentes daqueles que a selaram, chegando lá ela percebeu que estava ocorrendo um festival, onde os Reis e rainhas de todos os reinos se reuniam para celebrar a paz entre eles, aproveitando essa oportunidade a bruxa esperou o momento em que o rei e rainha do reino anfitrião apareceriam para declarar inicio ao festival e os matou na frente de todos, declarando guerra ao todos os reinos e avisando para se preparem que voltaria para destruir todos os reinos um a um e saiu. A filha do rei e rainha que foram mortos pela Bruxa, a princesa Fiona, presenciou todo o assassinato e a declaração de guerra e se enfureceu...Você foi convocado para fazer parte do exercito que deseja derrotar a bruxa, você aceita o desafio? < S | N >");
+            scene1.addChoice("Sim, aceito a missão de matar a bruxa!", 2);
+            scene1.addChoice("Não, vai procurar o que fazer..", 9);
             storyManager.addScene(1, scene1);
     
             Scene scene2(asciiArts["cavaleiro"], "Escolha sua classe:.");

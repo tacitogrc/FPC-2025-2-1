@@ -386,7 +386,34 @@ snd  '._/_)_(\__.'   (__,(__,_]
     
             Scene scene2(asciiArts["gameover"], "Você chegou a uma floresta densa.");
             scene2.addChoice("Voltar à montanha", 1);
-            storyManager.addScene(2, scene2); 
+            storyManager.addScene(2, scene2);
+
+            Scene scene3(asciiArts["intro"], "Bem-vindo à paisagem montanhosa!");
+            scene1.addChoice("Ir para a floresta", 2);
+            storyManager.addScene(1, scene1);
+    
+            Scene scene4(asciiArts["gameover"], "Você chegou a uma floresta densa.");
+            scene2.addChoice("Voltar à montanha", 1);
+            storyManager.addScene(2, scene2);
+
+            Scene scene5(asciiArts["intro"], "Bem-vindo à paisagem montanhosa!");
+            scene1.addChoice("Ir para a floresta", 2);
+            storyManager.addScene(1, scene1);
+    
+            Scene scene6(asciiArts["gameover"], "Você chegou a uma floresta densa.");
+            scene2.addChoice("Voltar à montanha", 1);
+            storyManager.addScene(2, scene2);
+    
+            Scene scene7(asciiArts["gameover"], "Você chegou a uma floresta densa.");
+            scene2.addChoice("Voltar à montanha", 1);
+            storyManager.addScene(2, scene2);
+
+            Scene scene8(asciiArts["gameover"], "Você chegou a uma floresta densa.");
+            scene2.addChoice("Voltar à montanha", 1);
+            storyManager.addScene(2, scene2);
+    
+            Scene scene9(asciiArts["gameover"], "Você chegou a uma floresta densa.");
+            scene2.addChoice("Voltar à montanha", 1);
         }
     
         // Método principal do jogo, que gerencia o fluxo entre as cenas

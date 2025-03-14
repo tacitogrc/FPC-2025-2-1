@@ -11,12 +11,14 @@
 #define d12 12
 #define d20 20
 #define d100 100
+#define qtde_caminhos 15
 
 using namespace std;
 
 int roll_dice (int dice_num);
 
-class FormaDeVida {
+class FormaDeVida 
+{
     protected:
       string nome;
       float vida;   // Valores de 0 a 100.
@@ -74,11 +76,51 @@ public:
             break;
         
         default:
-            cout<<"O grupo caiu no abismo e todos pereceram! GAME OVER! \n\n";
-            points = 16;
-            return points;
+            roll_saver = roll_dice(d100);
+            if(roll_saver<=95)
+            {
+                cout<<"O grupo caiu no abismo e todos pereceram! GAME OVER! \n\n";
+                points = 16;
+                return points;
+                break;
+            }
+            if(roll_saver>95)
+            {
+                cout<<"Uma sala secreta!\n";
+                _sleep(500);
+                cout<<".";
+                _sleep(500);
+                cout<<".";
+                _sleep(500);
+                cout<<".\n";
+                _sleep(500);
+                cout<<"Mas o quê?! É a Bruxa do 71! ATACAR!";
+                points = 16;
+                return points;
+                break;
+            }
+
+        }
+        switch (roll_dice(d4))
+        {
+        case 1:
+            cout<<"O grupo entra na sala sem problemas. \n\n";
+            break;
+        case 2:
+            cout<<"Uma armadilha no meio do caminho acerta o grupo! Todos tomam "<<roll_dice(d10)<<" de dano! \n\n";
+            break;
+        case 3:
+            cout<<"Um caminho tranquilo, na medida do possível... \n\n";
+            break;
+        case 4:
+            cout<<"Gases enfraquecedores se abatem sobre o grupo! Vocês estão fracos e causam menos "<<roll_dice(d8)<<" de dano de ataque! \n\n";
+            break;
+
+        default:
+            cout<<"Se vc está lendo isso a rebelião das máquinas já começou! Encontre John Connor, ele saberá o que fazer! \n\n";
             break;
         }
+
         acontecimento();
         return points;
 
@@ -124,6 +166,7 @@ public:
             break;
 
         default:
+            cout<<"Se vc está lendo isso a rebelião das máquinas já começou! Encontre John Connor, ele saberá o que fazer! \n\n";
             break;
         }
     }   
@@ -156,6 +199,7 @@ public:
             break;
         
         default:
+            cout<<"Se vc está lendo isso a rebelião das máquinas já começou! Encontre John Connor, ele saberá o que fazer! \n\n";
             break;
         }
     }
@@ -185,6 +229,7 @@ public:
             break;
         
         default:
+            cout<<"Se vc está lendo isso a rebelião das máquinas já começou! Encontre John Connor, ele saberá o que fazer! \n\n";
             break;
         }
     }
@@ -218,6 +263,7 @@ public:
             break;
         
         default:
+            cout<<"Se vc está lendo isso a rebelião das máquinas já começou! Encontre John Connor, ele saberá o que fazer! \n\n";
             break;
         }
 
@@ -312,8 +358,7 @@ int main (void)
     setlocale(LC_ALL,"pt_br.UTF-8");
     Evento_Randomico Entrar_na_sala;
 
-    for (int avancos = 0; avancos < 16; avancos = avancos + Entrar_na_sala.escolhe_sala()){}
-    
+    for (int avancos = 0; avancos <= qtde_caminhos; avancos = avancos + Entrar_na_sala.escolhe_sala()){}
 }
 
 int roll_dice (int dice_num)

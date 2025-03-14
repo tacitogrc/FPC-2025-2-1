@@ -24,8 +24,8 @@ class FormaDeVida {
     void setForca(int f) { if(f >= 0 && f <= 100) forca = f; }
     int getForca() { return forca; }
 
-    string ataque(float multiplicador ){
-      cout << getNome() << " ataca com força " << 10 * multiplicador << "!\n";
+    string ataque(FormaDeVida alvo){
+      cout << getNome() << " ataca com força " << roll_dice(d20) << "!\n";
     }
 };
 
@@ -79,19 +79,15 @@ class Mago : public SerHumano {
       switch (acao)
       {
       case 1: // Cura 
-        alvo.vida = floor(alvo.vida * 1.1);
+        alvo.vida = floor(alvo.vida + roll_dice(d10));
         /* code */
         break;
 
       case 2: // Aumento de Forca
-        alvo.forca = floor(alvo.forca * 1.1);
+        alvo.forca = floor(alvo.forca + roll_dice(d6));
         /* code */
         break;
 
-      case 3: // Remove Vida
-        alvo.vida = floor(alvo.vida * 0.9);
-        /* code */
-        break;
       default:
         /* a magia falhou */
         cout << "A magia falhou";

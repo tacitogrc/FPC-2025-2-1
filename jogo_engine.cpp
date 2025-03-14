@@ -37,8 +37,6 @@ class Scene {
         std::string narrativeText;
         std::vector<Choice> choices;
     };
-
-
 /*
 Função: Modela uma opção de interação disponível dentro de uma cena. Cada escolha pode ter uma descrição e uma referência à cena ou efeito que ela provoca, possibilitando a ramificação da narrativa.
 NEW: As escolhas podem acionar eventos aleatórios, modificar atributos do jogador ou influenciar o curso da história.

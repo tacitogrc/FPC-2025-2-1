@@ -44,7 +44,7 @@ public:
         }
     }
 };
-
+/*
 int main(void)
 {
     srand(time(0)); // Initialize random seed
@@ -75,3 +75,4 @@ int main(void)
 
     return 0;
 }
+*/

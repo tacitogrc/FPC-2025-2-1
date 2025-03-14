@@ -1,20 +1,8 @@
-// Inclui as definições de classes
 #include <iostream>
 #include <map>
 #include <string>
 #include <vector>
 #include <ctime> // Include ctime for time function
-
-#define coin 2
-#define d4 4
-#define d6 6
-#define d8 8
-#define d10 10
-#define d12 12
-#define d20 20
-#define d100 100
-
-int roll_dice (int dice_num);
 
 /*
 Função: Modela uma opção de interação disponível dentro de uma cena. Cada escolha pode ter uma descrição e uma referência à cena ou efeito que ela provoca, possibilitando a ramificação da narrativa.
@@ -462,57 +450,3 @@ class RandomEvent {
     public:
         void applyEvent();
     };
-
-int roll_dice (int dice_num)
-{
-    switch (dice_num)
-    {
-    case 2:
-        srand(time(0));
-        dice_num = rand() % coin+1;        
-        break;
-        
-    case 4:
-        srand(time(0));
-        dice_num = rand() % d4+1;        
-        break;
-
-    case 6:
-        srand(time(0));
-        dice_num = rand() % d6+1;        
-        break;
-
-    case 8:
-        srand(time(0));
-        dice_num = rand() % d8+1;        
-        break;
-        
-    case 10:
-        srand(time(0));
-        dice_num = rand() % d10+1;        
-        break;
-        
-    case 12:
-        srand(time(0));
-        dice_num = rand() % d12+1;        
-        break;
-
-    case 20:
-        srand(time(0));
-        dice_num = rand() % d20+1;       
-        break;
-        
-    case 100:
-        srand(time(0));
-        dice_num = rand() % d100+1;        
-        break;
-
-        
-    default:
-        break;
-    }
-    return dice_num;
-}
-
-
-

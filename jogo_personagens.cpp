@@ -1,7 +1,74 @@
 #include <iostream>
 #include <string>
 #include <clocale>
-#include "jogo_engine.cpp"
+#include <cmath> // Include cmath for floor function
+
+// Define dice constants
+const int d10 = 10;
+const int d6 = 6;
+const int d20 = 20;
+
+#define coin 2
+#define d4 4
+#define d6 6
+#define d8 8
+#define d10 10
+#define d12 12
+#define d20 20
+#define d100 100
+
+// Function to roll a dice
+int roll_dice (int dice_num)
+{
+    switch (dice_num)
+    {
+    case 2:
+        srand(time(0));
+        dice_num = rand() % coin+1;        
+        break;
+        
+    case 4:
+        srand(time(0));
+        dice_num = rand() % d4+1;        
+        break;
+
+    case 6:
+        srand(time(0));
+        dice_num = rand() % d6+1;        
+        break;
+
+    case 8:
+        srand(time(0));
+        dice_num = rand() % d8+1;        
+        break;
+        
+    case 10:
+        srand(time(0));
+        dice_num = rand() % d10+1;        
+        break;
+        
+    case 12:
+        srand(time(0));
+        dice_num = rand() % d12+1;        
+        break;
+
+    case 20:
+        srand(time(0));
+        dice_num = rand() % d20+1;       
+        break;
+        
+    case 100:
+        srand(time(0));
+        dice_num = rand() % d100+1;        
+        break;
+
+        
+    default:
+        break;
+    }
+    return dice_num;
+}
+
 using namespace std;
 
 // Classe base
@@ -79,12 +146,12 @@ class Mago : public SerHumano {
       switch (acao)
       {
       case 1: // Cura 
-        alvo.vida = floor(alvo.vida + roll_dice(d10));
+        alvo.setVida(floor(alvo.getVida() + roll_dice(d10)));
         /* code */
         break;
 
       case 2: // Aumento de Forca
-        alvo.forca = floor(alvo.forca + roll_dice(d6));
+        alvo.setForca(floor(alvo.getForca() + roll_dice(d6)));
         /* code */
         break;
 
@@ -203,6 +270,7 @@ class Dragao : public Monstro {
     int getFogo() { return fogo; }
 
     int ataque(int dano, FormaDeVida &alvo){
-    return alvo.vida = alvo.vida - dano;
+    alvo.setVida(alvo.getVida() - dano);
+    return alvo.getVida();
     }
 };

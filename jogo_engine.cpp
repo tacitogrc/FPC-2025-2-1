@@ -376,7 +376,7 @@ Você foi convocado para fazer parte do exercito que deseja derrotar a bruxa, vo
             scene1.addChoice("Ir para a floresta", 2);
             storyManager.addScene(1, scene1);
     
-            Scene scene2(asciiArts["gameover"], "Escolha sua classe:.");
+            Scene scene2(asciiArts["cavaleiro"], "Escolha sua classe:.");
             scene2.addChoice("Cavaleiro", 1);
             scene2.addChoice("Mago", 2);
             storyManager.addScene(2, scene2);

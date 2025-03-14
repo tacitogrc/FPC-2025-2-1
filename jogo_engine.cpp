@@ -393,8 +393,8 @@ eViL        /   /     ||--+--|--+-/-|     \   \
             storyManager.addScene(1, scene1);
     
             Scene scene2(asciiArts["cavaleiro"], "Escolha sua classe:.");
-            scene2.addChoice("Cavaleiro", 1);
-            scene2.addChoice("Mago", 2);
+            scene2.addChoice("Cavaleiro", 3);
+            scene2.addChoice("Mago", 3);
             storyManager.addScene(2, scene2);
 
             Scene scene3(asciiArts["ogro"], "Cap I Parte - I: A floresta \n Ao entrar no exército você foi ao castelo da princesa fiona onde todos foram convocados para receber as primeiras instruções...Chegando no castelo, você estranhou, pois só tinha você, um (mago ou cavaleiro, a classe que restou) e um aldeão, e se questionou se estava no lugar certo, e logo em seguida a princesa foi até vocês e se pronunciou: \n-Olá bravos guerreiros, sinto dizer que só restou a nós, tínhamos um exército com mais de 10 mil homens mas todos foram mortos pela Bruxa na primeira tentativa de invasão, mas convoquei vocês aqui porque a morte desses homens não foi em vão, eles nos deixaram um pedaço de pergaminho com um mapa até a Bruxa e todos os possíveis perigos que nós iremos enfrentar.\nE logo o aldeão pergunta:\n -Nós? Você irá conosco? E seremos so nós?\n E a princesa responde:\n -Sim! Não perderei a oportunidade de vingar meus pais, além disso, durante toda minha vida fui treinada por uma feiticeira que aconselhava minha família, então poderei lutar ao lado de vocês.\nE respondendo a sua segunda pergunta, Sim! Seremos só nós, e será o suficiente para acabar com a Bruxa agora que temos esse pergaminho.-\nApós a pequena reunião e sanadas as dúvidas entre o grupo, o mesmo se dirige para floresta em busca do covil da bruxa e é surpreendido por um grupo de ogros atacando aldeões.\n[Missão 01] Derrote os ogros antes que eles matem os aldeões, PREPARE-SE PARA O COMBATE!");

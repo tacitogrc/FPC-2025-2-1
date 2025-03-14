@@ -395,16 +395,17 @@ snd  '._/_)_(\__.'   (__,(__,_]
             scene2.addChoice("Iniciar o combate:", 1);
             storyManager.addScene(6, scene6);
     
-            Scene scene7(asciiArts["gameover"], "Você chegou a uma floresta densa.");
-            scene2.addChoice("Voltar à montanha", 1);
-            storyManager.addScene(2, scene2);
+            Scene scene7(asciiArts["castelo"], "Parabéns, com a derrota do dragão o reino provou uma paz por alguns anos ! ");
+            scene2.addChoice("Pressione para continuar", 1);
+            storyManager.addScene(7, scene7);
 
-            Scene scene8(asciiArts["gameover"], "Você chegou a uma floresta densa.");
-            scene2.addChoice("Voltar à montanha", 1);
-            storyManager.addScene(2, scene2);
+            Scene scene8(asciiArts["endgame"], "Porém tudo que é bom dura pouco, boatos surgem e parece que a bruxa deixou ovos de dragão escondidos na floresta, que eclodiram com o passar dos anos e agora relatos de diversos dragões atacando outros reinos tem se tornado frequentes, talvez ainda precisaremos da sua ajuda aventureiro.\<<FIM>>");
+            scene8.addChoice("Voltar ao início", 1);
+            storyManager.addScene(1, scene1);
     
-            Scene scene9(asciiArts["gameover"], "Você chegou a uma floresta densa.");
-            scene2.addChoice("Voltar à montanha", 1);
+            Scene scene9(asciiArts["gameover"], "Você morreu.");
+            scene9.addChoice("Voltar ao início", 1);
+            storyManager.addScene(1, scene1);
         }
     
         // Método principal do jogo, que gerencia o fluxo entre as cenas

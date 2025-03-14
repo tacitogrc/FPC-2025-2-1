@@ -1,7 +1,7 @@
 #include <iostream>
+#include <string>
 #include <cmath>
 #include <ctime>
-#include <string>
 
 class FormaDeVida {
 protected:

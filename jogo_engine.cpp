@@ -386,7 +386,7 @@ snd  '._/_)_(\__.'   (__,(__,_]
     
             Scene scene2(asciiArts["gameover"], "Você chegou a uma floresta densa.");
             scene2.addChoice("Voltar à montanha", 1);
-            storyManager.addScene(2, scene2);
+            storyManager.addScene(2, scene2); 
         }
     
         // Método principal do jogo, que gerencia o fluxo entre as cenas

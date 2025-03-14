@@ -365,9 +365,27 @@ snd  '._/_)_(\__.'   (__,(__,_]
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; 
             )";
+            asciiArts["demo"] = R"(
+                     ,-.
+       ___,---.__          /'|`\          __,---,___
+    ,-'    \`    `-.____,-'  |  `-.____,-'    //    `-.
+  ,'        |           ~'\     /`~           |        `.
+ /      ___//              `. ,'          ,  , \___      \
+|    ,-'   `-.__   _         |        ,    __,-'   `-.    |
+|   /          /\_  `   .    |    ,      _/\          \   |
+\  |           \ \`-.___ \   |   / ___,-'/ /           |  /
+ \  \           | `._   `\\  |  //'   _,' |           /  /
+  `-.\         /'  _ `---'' , . ``---' _  `\         /,-'
+     ``       /     \    ,='/ \`=.    /     \       ''
+             |__   /|\_,--.,-.--,--._/|\   __|
+             /  `./  \\`\ |  |  | /,//' \,'  \
+eViL        /   /     ||--+--|--+-/-|     \   \
+           |   |     /'\_\_\ | /_/_/`\     |   |
+            \   \__, \_     `~'     _/ .__/   /
+             `-._,-'   `-._______,-'   `-._,-'
+            )";
             asciiArts["template"] = R"(
             )";
-            
             // Cadastra as cenas utilizando as ASCII arts definidas
             Scene scene1(asciiArts["intro"], "Em um reino muito distante chamado Exandria uma bruxa muito má estava selada em uma rocha e após 100 anos o selo enfraqueceu e ela se libertou...Após se libertar, a Bruxa voou em direção ao reino de Exandria que era comandado pelos descendentes daqueles que a selaram, chegando lá ela percebeu que estava ocorrendo um festival, onde os Reis e rainhas de todos os reinos se reuniam para celebrar a paz entre eles, aproveitando essa oportunidade a bruxa esperou o momento em que o rei e rainha do reino anfitrião apareceriam para declarar inicio ao festival e os matou na frente de todos, declarando guerra ao todos os reinos e avisando para se preparem que voltaria para destruir todos os reinos um a um e saiu. A filha do rei e rainha que foram mortos pela Bruxa, a princesa Fiona, presenciou todo o assassinato e a declaração de guerra e se enfureceu...Você foi convocado para fazer parte do exercito que deseja derrotar a bruxa, você aceita o desafio? < S | N >");
             scene1.addChoice("Sim, aceito a missão de matar a bruxa!", 2);
@@ -379,10 +397,16 @@ snd  '._/_)_(\__.'   (__,(__,_]
             scene2.addChoice("Mago", 2);
             storyManager.addScene(2, scene2);
 
-            Scene scene3(asciiArts["ogro"], "Cap I: A floresta \n Ao entrar no exército você foi ao castelo da princesa fiona onde todos foram convocados para receber as primeiras instruções...Chegando no castelo, você estranhou, pois só tinha você, um (mago ou cavaleiro, a classe que restou) e um aldeão, e se questionou se estava no lugar certo, e logo em seguida a princesa foi até vocês e se pronunciou: \n-Olá bravos guerreiros, sinto dizer que só restou a nós, tínhamos um exército com mais de 10 mil homens mas todos foram mortos pela Bruxa na primeira tentativa de invasão, mas convoquei vocês aqui porque a morte desses homens não foi em vão, eles nos deixaram um pedaço de pergaminho com um mapa até a Bruxa e todos os possíveis perigos que nós iremos enfrentar.\nE logo o aldeão pergunta:\n -Nós? Você irá conosco? E seremos so nós?\n E a princesa responde:\n -Sim! Não perderei a oportunidade de vingar meus pais, além disso, durante toda minha vida fui treinada por uma feiticeira que aconselhava minha família, então poderei lutar ao lado de vocês.\nE respondendo a sua segunda pergunta, Sim! Seremos só nós, e será o suficiente para acabar com a Bruxa agora que temos esse pergaminho.-\nApós a pequena reunião e sanadas as dúvidas entre o grupo, o mesmo se dirige para floresta em busca do covil da bruxa e é surpreendido por um grupo de ogros atacando aldeões.\n[Missão 01] Derrote os ogros antes que eles matem os aldeões, PREPARE-SE PARA O COMBATE!");
+            Scene scene3(asciiArts["ogro"], "Cap I Parte - I: A floresta \n Ao entrar no exército você foi ao castelo da princesa fiona onde todos foram convocados para receber as primeiras instruções...Chegando no castelo, você estranhou, pois só tinha você, um (mago ou cavaleiro, a classe que restou) e um aldeão, e se questionou se estava no lugar certo, e logo em seguida a princesa foi até vocês e se pronunciou: \n-Olá bravos guerreiros, sinto dizer que só restou a nós, tínhamos um exército com mais de 10 mil homens mas todos foram mortos pela Bruxa na primeira tentativa de invasão, mas convoquei vocês aqui porque a morte desses homens não foi em vão, eles nos deixaram um pedaço de pergaminho com um mapa até a Bruxa e todos os possíveis perigos que nós iremos enfrentar.\nE logo o aldeão pergunta:\n -Nós? Você irá conosco? E seremos so nós?\n E a princesa responde:\n -Sim! Não perderei a oportunidade de vingar meus pais, além disso, durante toda minha vida fui treinada por uma feiticeira que aconselhava minha família, então poderei lutar ao lado de vocês.\nE respondendo a sua segunda pergunta, Sim! Seremos só nós, e será o suficiente para acabar com a Bruxa agora que temos esse pergaminho.-\nApós a pequena reunião e sanadas as dúvidas entre o grupo, o mesmo se dirige para floresta em busca do covil da bruxa e é surpreendido por um grupo de ogros atacando aldeões.\n[Missão 01] Derrote os ogros antes que eles matem os aldeões, PREPARE-SE PARA O COMBATE!");
             scene1.addChoice("Iniciar o combate", 1);
             storyManager.addScene(3, scene3);
-    
+            
+            Scene scene35(asciiArts["demo"], "Na busca pela bruxa vocês chegam ao labirinto e devem encontrar a entrada do covil, mas agora estão parados em uma bifurcação com 03 salas que não estavam registrados no mapa, qual deseja entrar?");
+            scene2.addChoice("Sala Clara", 1);
+            scene2.addChoice("Sala meio iluminada", 2);
+            scene2.addChoice("Sala Escura", 3);
+            storyManager.addScene(35, scene35);
+
             Scene scene4(asciiArts["bruxa"], "Cap II: A bruxa \n Após a batalha na floresta, vocês viajam por dias em busca do covil, seguindo o mapa que vocês possuem, o cheiro de pântano começa a crescer, a umidade se tora desconfortável, uma névoa vem crescendo ha dias, de repente vocês se deparam com uma criatura na entrada de um covil, aparentemente realizando algum tipo de ritual, o que deseja fazer:");
             scene2.addChoice("Aproximar-se sorrateiramente", 1);
             scene2.addChoice("Atacar com tudo", 2);
@@ -404,8 +428,9 @@ snd  '._/_)_(\__.'   (__,(__,_]
             scene8.addChoice("Voltar ao início", 1);
             storyManager.addScene(1, scene1);
     
-            Scene scene9(asciiArts["gameover"], "Você morreu.");
-            scene9.addChoice("Voltar ao início", 1);
+            Scene scene9(asciiArts["gameover"], "Você morreu. Deseja tentar de novo?");
+            scene9.addChoice("Sim", 1);
+            scene9.addChoice("Não", 2);
             storyManager.addScene(1, scene1);
         }
     

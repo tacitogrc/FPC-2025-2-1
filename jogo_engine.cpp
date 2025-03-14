@@ -388,13 +388,13 @@ snd  '._/_)_(\__.'   (__,(__,_]
             scene2.addChoice("Atacar com tudo", 2);
             storyManager.addScene(4, scene4);
 
-            Scene scene5(asciiArts["intro"], "Cap III: A segunda forma \n Vocês lutaram bravamente e derrotaram a bruxa, mas as coisas não são tão fáceis quanto parece, quando olham para o corpo dela desfalecido no chão, percebem que a sua pele começa a mudar, olhos amarelando, dentes afiados e a seu tamanho aumentando, de repente, um dragão aparece.\n[Missão 02: Derrote o dragão]");
-            scene1.addChoice("Ir para a floresta", 2);
+            Scene scene5(asciiArts["dragao"], "Cap III: A segunda forma \n Vocês lutaram bravamente e derrotaram a bruxa, mas as coisas não são tão fáceis quanto parece, quando olham para o corpo dela desfalecido no chão, percebem que a sua pele começa a mudar, olhos amarelando, dentes afiados e a seu tamanho aumentando, de repente, um dragão aparece.\n[Missão 02: Derrote o dragão]");
+            scene1.addChoice("Iniciar o combate", 1);
             storyManager.addScene(5, scene5);
     
-            Scene scene6(asciiArts["gameover"], "Você chegou a uma floresta densa.");
-            scene2.addChoice("Voltar à montanha", 1);
-            storyManager.addScene(2, scene2);
+            Scene scene6(asciiArts["mago_ataque"], "Percebendo que a luta com o dragão estava bastante perigosa a princesa desperta um poder ancestral e canaliza toda a energia para destruir o dragão, salvando todos do grupo. O dragão se debate, gorgoleja e finalmente é derrotado..");
+            scene2.addChoice("Iniciar o combate:", 1);
+            storyManager.addScene(6, scene6);
     
             Scene scene7(asciiArts["gameover"], "Você chegou a uma floresta densa.");
             scene2.addChoice("Voltar à montanha", 1);

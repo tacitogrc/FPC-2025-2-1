@@ -1,8 +1,11 @@
 #include <iostream>
 #include "jogo_engine.cpp"
 #include "jogo_personagens.cpp"
+#include <locale>
 
 int main(void) {
+    // Define a localidade para pt_BR com codificação UTF-8
+    setlocale(LC_ALL, "pt_BR.UTF-8");
 
     //inicializa o jogo
     Game game;

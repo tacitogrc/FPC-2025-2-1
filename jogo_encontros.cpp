@@ -1,7 +1,7 @@
 // Inclui as definições de classes
 #include <iostream>
-#include <string>
-#include<locale>
+#include <cstring>
+#include <locale>
 
 #define coin 2
 #define d4 4

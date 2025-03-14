@@ -1,3 +1,8 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <ctime>
+
 class FormaDeVida {
 protected:
     string nome;
@@ -17,6 +22,7 @@ public:
     
     bool estaVivo() { return vida > 0; }
     string getNome() { return nome; }
+    void setNome(string n) { nome = n; }
     int getVida() { return vida; }
     virtual void atacar(FormaDeVida &alvo) {
         int dano = (rand() % forca) + 1;
@@ -32,6 +38,11 @@ public:
 int main(void) {
 
   cout << "Sherek enfrenta Granamir!\n";
+
+  FormaDeVida sherek, granamir;
+
+  sherek.setNome("Sherek");
+  granamir.setNome("Granamir");
     
   while (sherek.estaVivo() && granamir.estaVivo()) {
     shereik.atacar(granamir);

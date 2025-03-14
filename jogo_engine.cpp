@@ -3,7 +3,7 @@
 #include <map>
 #include <string>
 #include <vector>
-#include "jogo_personagens.cpp"
+#include <ctime> // Include ctime for time function
 
 #define coin 2
 #define d4 4
@@ -15,6 +15,100 @@
 #define d100 100
 
 int roll_dice (int dice_num);
+
+/*
+Função: Modela uma opção de interação disponível dentro de uma cena. Cada escolha pode ter uma descrição e uma referência à cena ou efeito que ela provoca, possibilitando a ramificação da narrativa.
+NEW: As escolhas podem acionar eventos aleatórios, modificar atributos do jogador ou influenciar o curso da história.
+*/
+class Choice {
+    public:
+        Choice(const std::string& text, int nextSceneId)
+            : description(text), nextSceneId(nextSceneId) {}
+        std::string getDescription() const { return description; }
+        int getTargetSceneId() const { return nextSceneId; }
+    private:
+        std::string description;
+        int nextSceneId;
+};
+
+/*
+Função: Representa um “capítulo” ou momento da história. Cada cena pode conter o texto narrativo, as descrições do ambiente e uma lista de opções que o jogador pode escolher para avançar a narrativa.
+*/
+class Scene {
+    public:
+        Scene() : asciiArt(""), narrative("") {} // Default constructor
+        Scene(const std::string &asciiArt, const std::string &narrative)
+            : asciiArt(asciiArt), narrative(narrative) {}
+    
+        // Adiciona uma escolha à cena
+        void addChoice(const std::string &option, int nextSceneId) {
+            choices.push_back({option, nextSceneId});
+        }
+    
+        // Exibe a cena na tela
+        void display() const {
+            std::cout << asciiArt << "\n" << narrative << "\n";
+            if (!choices.empty()) {
+                std::cout << "\nEscolhas:\n";
+                for (size_t i = 0; i < choices.size(); i++) {
+                    std::cout << (i + 1) << ": " << choices[i].getDescription() << "\n";
+                }
+            }
+        }
+        // Retorna as escolhas da cena
+        const std::vector<Choice>& getChoices() const {
+            return choices;
+        }
+    
+    private:
+        std::string asciiArt;
+        std::string narrative;
+        std::vector<Choice> choices;
+};
+
+/*
+Função: Responsável por gerenciar a sequência da narrativa, definindo qual cena deve ser apresentada a seguir com base nas escolhas do usuário. Essa classe pode armazenar a estrutura narrativa (por exemplo, em forma de árvore ou grafo) e controlar o fluxo da história.
+*/
+class StoryManager {
+    public:
+        // Adiciona uma cena com um identificador único
+        void addScene(int id, const Scene &scene) {
+            scenes[id] = scene;
+        }
+        
+        // Retorna um ponteiro para a cena correspondente ao id
+        Scene* getScene(int id) {
+            auto it = scenes.find(id);
+            if (it != scenes.end())
+                return &(it->second);
+            return nullptr;
+        }
+    
+    private:
+        std::map<int, Scene> scenes;
+};
+
+/*
+Função: Responsável por capturar e interpretar a entrada do usuário. Essa classe pode validar as opções digitadas ou selecionadas, transformando a entrada em comandos ou escolhas que serão processadas pelo StoryManager.
+*/
+class InputHandler {
+    public:
+        int getUserChoice() {
+            int choice;
+            std::cout << "\nDigite sua escolha: ";
+            std::cin >> choice;
+            return choice;
+        }
+};
+
+/*
+DecisionEngine/BranchingEngine
+Função: Se a sua narrativa tiver regras mais complexas ou variáveis que influenciem o curso da história (por exemplo, estados que persistem durante o jogo), uma classe dedicada para processar essas decisões pode ser útil. Ela pode avaliar condições e determinar a próxima cena com base em múltiplos fatores.
+*/
+class DecisionEngine {
+    public:
+        int evaluateDecision(const Scene& scene, int choiceId);
+};
 
 /*
 Game/Engine
@@ -320,7 +414,7 @@ snd  '._/_)_(\__.'   (__,(__,_]
                     std::cout << "Opção inválida, tente novamente.\n";
                     continue;
                 }
-                currentSceneId = currentScene->getChoices()[choice - 1].nextSceneId;
+                currentSceneId = currentScene->getChoices()[choice - 1].getTargetSceneId();
             }
         }
     
@@ -330,98 +424,6 @@ snd  '._/_)_(\__.'   (__,(__,_]
         std::map<std::string, std::string> asciiArts; // Map de ASCII arts pré-definidas
 };
     
-
-/*
-Função: Responsável por gerenciar a sequência da narrativa, definindo qual cena deve ser apresentada a seguir com base nas escolhas do usuário. Essa classe pode armazenar a estrutura narrativa (por exemplo, em forma de árvore ou grafo) e controlar o fluxo da história.
-*/
-class StoryManager {
-    public:
-        // Adiciona uma cena com um identificador único
-        void addScene(int id, const Scene &scene) {
-            scenes[id] = scene;
-        }
-        
-        // Retorna um ponteiro para a cena correspondente ao id
-        Scene* getScene(int id) {
-            auto it = scenes.find(id);
-            if (it != scenes.end())
-                return &(it->second);
-            return nullptr;
-        }
-    
-    private:
-        std::map<int, Scene> scenes;
-    };
-/*
-Função: Representa um “capítulo” ou momento da história. Cada cena pode conter o texto narrativo, as descrições do ambiente e uma lista de opções que o jogador pode escolher para avançar a narrativa.
-*/
-class Scene {
-    public:
-        Scene(const std::string &asciiArt, const std::string &narrative)
-            : asciiArt(asciiArt), narrative(narrative) {}
-    
-        // Adiciona uma escolha à cena
-        void addChoice(const std::string &option, int nextSceneId) {
-            choices.push_back({option, nextSceneId});
-        }
-    
-        // Exibe a cena na tela
-        void display() const {
-            std::cout << asciiArt << "\n" << narrative << "\n";
-            if (!choices.empty()) {
-                std::cout << "\nEscolhas:\n";
-                for (size_t i = 0; i < choices.size(); i++) {
-                    std::cout << (i + 1) << ": " << choices[i].getDescription() << "\n";
-                }
-            }
-        }
-        // Retorna as escolhas da cena
-        const std::vector<Choice>& getChoices() const {
-            return choices;
-        }
-    
-    private:
-        std::string asciiArt;
-        std::string narrative;
-        std::vector<Choice> choices;
-    };
-/*
-Função: Modela uma opção de interação disponível dentro de uma cena. Cada escolha pode ter uma descrição e uma referência à cena ou efeito que ela provoca, possibilitando a ramificação da narrativa.
-NEW: As escolhas podem acionar eventos aleatórios, modificar atributos do jogador ou influenciar o curso da história.
-*/
-class Choice {
-    public:
-        Choice(const std::string& text, int nextSceneId)
-            : description(text), nextSceneId(nextSceneId) {}
-        std::string getDescription() const;
-        int getTargetSceneId() const;
-    private:
-        std::string description;
-        int nextSceneId;
-    };
-       
-/*
-Função: Responsável por capturar e interpretar a entrada do usuário. Essa classe pode validar as opções digitadas ou selecionadas, transformando a entrada em comandos ou escolhas que serão processadas pelo StoryManager.
-*/
-class InputHandler {
-    public:
-        int getUserChoice() {
-            int choice;
-            std::cout << "\nDigite sua escolha: ";
-            std::cin >> choice;
-            return choice;
-        }
-    };
-    
-/*
-DecisionEngine/BranchingEngine
-Função: Se a sua narrativa tiver regras mais complexas ou variáveis que influenciem o curso da história (por exemplo, estados que persistem durante o jogo), uma classe dedicada para processar essas decisões pode ser útil. Ela pode avaliar condições e determinar a próxima cena com base em múltiplos fatores.
-*/
-class DecisionEngine {
-    public:
-        int evaluateDecision(const Scene& scene, int choiceId);
-    };
-
 /*nas escolhas do jogador pode acontecer eventos aletorios que vao modificar seus 
 atributos de forma positiva ou negativa*/
 
@@ -431,7 +433,7 @@ Função: Representa um evento aleatório que pode ocorrer durante a narrativa. 
 */
 class RandomEvent {
     public:
-        void applyEvent(FormaDeVida& character);
+        void applyEvent();
     };
 
 int roll_dice (int dice_num)

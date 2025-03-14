@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <clocale>
-#include <math>
+#include "jogo_engine.cpp"
 using namespace std;
 
 // Classe base

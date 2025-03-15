@@ -402,26 +402,32 @@ eViL        /   /     ||--+--|--+-/-|     \   \
             storyManager.addScene(3, scene3);
             
             Scene scene35(asciiArts["demo"], "Vocês vencem os ogros após muito sacrifício, porém na busca pela bruxa vocês chegam ao labirinto e devem encontrar a entrada do covil, mas agora estão parados em uma bifurcação com 03 salas que não estavam registrados no mapa, qual deseja entrar?");
-            scene2.addChoice("Sala Clara", 1);
-            scene2.addChoice("Sala meio iluminada", 2);
-            scene2.addChoice("Sala Escura", 3);
+            scene2.addChoice("Sala Clara", 36);
+            scene2.addChoice("Sala meio iluminada",4 );
+            scene2.addChoice("Sala Escura", 4);
             storyManager.addScene(35, scene35);
 
+            Scene scene36(asciiArts["demo"], "Um demônio foi conjurado pegando vocês de surpresa, não há como vencer !");
+            scene2.addChoice("Sala Clara", 1);
+            scene2.addChoice("Sala meio iluminada",4 );
+            scene2.addChoice("Sala Escura", 4);
+            storyManager.addScene(36, scene36);
+
             Scene scene4(asciiArts["bruxa"], "Cap II: A bruxa \n Após a batalha no labirinto, vocês andam por muitas horas em busca do covil, seguindo o mapa que vocês possuem, o cheiro de pântano começa a crescer, a umidade se tora desconfortável, uma névoa vem crescendo ha dias, de repente vocês saem do labirinto e se deparam com uma criatura na entrada de um covil, aparentemente realizando algum tipo de ritual, o que deseja fazer:");
-            scene2.addChoice("Aproximar-se sorrateiramente", 1);
+            scene2.addChoice("Aproximar-se sorrateiramente", 5);
             scene2.addChoice("Atacar com tudo", 9);
             storyManager.addScene(4, scene4);
 
             Scene scene5(asciiArts["dragao"], "Cap III: A segunda forma \n Vocês lutaram bravamente e derrotaram a bruxa, mas as coisas não são tão fáceis quanto parece, quando olham para o corpo dela desfalecido no chão, percebem que a sua pele começa a mudar, olhos amarelando, dentes afiados e a seu tamanho aumentando, de repente, um dragão aparece.\n[Missão 02: Derrote o dragão]");
-            scene1.addChoice("Iniciar o combate", 1);
+            scene1.addChoice("Iniciar o combate", 6);
             storyManager.addScene(5, scene5);
     
             Scene scene6(asciiArts["mago_ataque"], "Percebendo que a luta com o dragão estava bastante perigosa a princesa desperta um poder ancestral e canaliza toda a energia para destruir o dragão, salvando todos do grupo. O dragão se debate, gorgoleja e finalmente é derrotado..");
-            scene2.addChoice("Iniciar o combate:", 1);
+            scene2.addChoice("Iniciar o combate:", 7);
             storyManager.addScene(6, scene6);
     
             Scene scene7(asciiArts["castelo"], "Parabéns, com a derrota do dragão o reino provou uma paz por alguns anos ! ");
-            scene2.addChoice("Pressione para continuar", 1);
+            scene2.addChoice("Pressione para continuar", 8);
             storyManager.addScene(7, scene7);
 
             Scene scene8(asciiArts["endgame"], "Porém tudo que é bom dura pouco, boatos surgem e parece que a bruxa deixou ovos de dragão escondidos na floresta, que eclodiram com o passar dos anos e agora relatos de diversos dragões atacando outros reinos tem se tornado frequentes, talvez ainda precisaremos da sua ajuda aventureiro.\<<FIM>>");

@@ -400,15 +400,15 @@ eViL        /   /     ||--+--|--+-/-|     \   \
             scene1.addChoice("Iniciar o combate", 35);
             storyManager.addScene(3, scene3);
             
-            Scene scene35(asciiArts["demo"], "Na busca pela bruxa vocês chegam ao labirinto e devem encontrar a entrada do covil, mas agora estão parados em uma bifurcação com 03 salas que não estavam registrados no mapa, qual deseja entrar?");
+            Scene scene35(asciiArts["demo"], "Vocês vencem os ogros após muito sacrifício, porém na busca pela bruxa vocês chegam ao labirinto e devem encontrar a entrada do covil, mas agora estão parados em uma bifurcação com 03 salas que não estavam registrados no mapa, qual deseja entrar?");
             scene2.addChoice("Sala Clara", 1);
             scene2.addChoice("Sala meio iluminada", 2);
             scene2.addChoice("Sala Escura", 3);
             storyManager.addScene(35, scene35);
 
-            Scene scene4(asciiArts["bruxa"], "Cap II: A bruxa \n Após a batalha na floresta, vocês viajam por dias em busca do covil, seguindo o mapa que vocês possuem, o cheiro de pântano começa a crescer, a umidade se tora desconfortável, uma névoa vem crescendo ha dias, de repente vocês se deparam com uma criatura na entrada de um covil, aparentemente realizando algum tipo de ritual, o que deseja fazer:");
+            Scene scene4(asciiArts["bruxa"], "Cap II: A bruxa \n Após a batalha no labirinto, vocês andam por muitas horas em busca do covil, seguindo o mapa que vocês possuem, o cheiro de pântano começa a crescer, a umidade se tora desconfortável, uma névoa vem crescendo ha dias, de repente vocês saem do labirinto e se deparam com uma criatura na entrada de um covil, aparentemente realizando algum tipo de ritual, o que deseja fazer:");
             scene2.addChoice("Aproximar-se sorrateiramente", 1);
-            scene2.addChoice("Atacar com tudo", 2);
+            scene2.addChoice("Atacar com tudo", 9);
             storyManager.addScene(4, scene4);
 
             Scene scene5(asciiArts["dragao"], "Cap III: A segunda forma \n Vocês lutaram bravamente e derrotaram a bruxa, mas as coisas não são tão fáceis quanto parece, quando olham para o corpo dela desfalecido no chão, percebem que a sua pele começa a mudar, olhos amarelando, dentes afiados e a seu tamanho aumentando, de repente, um dragão aparece.\n[Missão 02: Derrote o dragão]");

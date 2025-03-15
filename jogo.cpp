@@ -1,6 +1,6 @@
 #include <iostream>
-#include "jogo_engine.cpp"
-#include "jogo_personagens.cpp"
+#include "C:\Seu_Diretorio_aqui\jogo_engine.cpp"
+#include "C:\Seu_Diretorio_aqui\jogo_personagens.cpp"
 #include <locale>
 
 int main(void) {

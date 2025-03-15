@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <ctime> // Include ctime for time function
+#include "jogo_personagem.cpp"
 
 /*
 Função: Modela uma opção de interação disponível dentro de uma cena. Cada escolha pode ter uma descrição e uma referência à cena ou efeito que ela provoca, possibilitando a ramificação da narrativa.

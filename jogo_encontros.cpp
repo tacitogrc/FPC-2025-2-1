@@ -15,6 +15,8 @@
 
 using namespace std;
 
+unsigned int roll_saver;
+
 int roll_dice (int dice_num);
 
 class FormaDeVida 
@@ -22,11 +24,12 @@ class FormaDeVida
     protected:
       string nome;
       float vida;   // Valores de 0 a 100.
-      float forca;  // Valores de 0 a 100.
+      float dano;  // Valores de 0 a 100.
+      bool prot;
       
     public:
-      FormaDeVida() : vida(100), forca(100) { }
-      FormaDeVida(string n) : nome(n), vida(100), forca(100) { }
+      FormaDeVida() : vida(100), dano(100) { }
+      FormaDeVida(string n) : nome(n), vida(100), dano(100) { }
       
       void setNome(string n) { nome = n; }
       string getNome() { return nome; }
@@ -34,20 +37,116 @@ class FormaDeVida
       void setVida(int v) { if(v >= 0 && v <= 100) vida = v; else if(v > 100) vida = 100; }
       int getVida() { return vida; }
       
-      void setForca(int f) { if(f >= 0 && f <= 100) forca = f; }
-      int getForca() { return forca; }
+      void setDano(int f) { if(f >= 0 && f <= 100) dano = f; }
+      int getDano() { return dano; }
   
-      string ataque(FormaDeVida alvo){
-        cout << getNome() << " ataca com força " << roll_dice(d20) << "!\n";
+      void ataque(FormaDeVida alvo){
+        roll_saver = dano+roll_dice(d20);
+        if (alvo.getProtecao())
+        {
+            cout<< getNome()<<" atacou "<<alvo.getNome()<<", mas o Cavaleiro o protegeu! O cavaleiro recebeu " <<roll_saver*0.6<<" de dano! \n\n";
+        }
+        
+        cout << getNome() << " atacou " << alvo.getNome() << " e causou " << roll_saver << " de dano! \n\n";       
       }
+      void setProtecao(bool p) {prot = p;}
+      bool getProtecao() { return prot;}
   };
 
+    class Cavaleiro:public FormaDeVida
+    {
+        public:
+            void protege(FormaDeVida alvo)
+            {
+                alvo.setProtecao(true);
+                cout<< getNome()<< " está protegendo "<<alvo.getNome()<<"\n\n";
+            }
 
+    };
+
+    class Mago: public FormaDeVida
+    {
+        public:
+            void ataque_AoE()
+            {
+                roll_saver = dano+roll_dice(d10);
+                cout<< getNome()<<" atacou todos os inimigos, causando "<<roll_saver<<" de dano! \n\n";
+            }
+    };
+
+    class Princesa: public FormaDeVida
+    {
+        public:
+            void Cura(FormaDeVida alvo)
+            {
+                roll_saver = dano+roll_dice(d10);
+                cout<< getNome()<<" curou "<<alvo.getNome()<<" em " <<roll_saver<<"pontos de vida! \n\n";
+            }
+    };
+
+    class Aldeao: public FormaDeVida
+    {
+        public:
+            void Encoraja(FormaDeVida alvo)
+            {
+                roll_saver = dano+roll_dice(d6);
+                cout<< getNome()<<" encorajou "<<alvo.getNome()<<"! Agora ele causa mais " <<roll_saver<<"de dano! \n\n";
+            }
+    };
+
+    class Orgo: public FormaDeVida
+    {
+        public:
+            void Zomba(FormaDeVida alvo)
+            {
+                roll_saver = dano+roll_dice(d8);
+                if (alvo.getProtecao())
+                {
+                    cout<< getNome()<<" zombou de "<<alvo.getNome()<<", mas o Cavaleiro o protegeu! O cavaleiro causa " <<roll_saver*0.9<<" de dano! \n\n";
+                }
+                
+                cout<< getNome()<<" zombou de "<<alvo.getNome()<<"! Agora ele causa menos " <<roll_saver<<"de dano! \n\n";
+            }
+    };
+
+    class Bruxa: public FormaDeVida
+    {
+        public:
+        void ataque_AoE()
+        {
+            roll_saver = dano+roll_dice(d12);
+            cout<< getNome()<<" atacou todos os heróis, causando "<<roll_saver<<" de dano! \n\n";
+        }
+        void ataque_poderoso(FormaDeVida alvo)
+        {
+            roll_saver = dano+roll_dice(d12)+roll_dice(d12);
+            if (alvo.getProtecao())
+            {
+                cout<< getNome()<<" atacou "<<alvo.getNome()<<" com um poder massivo, mas o Cavaleiro o protegeu! O cavaleiro recebeu " <<roll_saver*0.8<<" de dano! \n\n";
+            }
+            cout<< getNome()<<" atacou "<<alvo.getNome()<<" com um poder massivo, causando "<<roll_saver<<" de dano! \n\n";
+        }
+    };
+
+    class Dragao: public FormaDeVida
+    {
+        public:
+        void ataque_AoE()
+        {
+            roll_saver = dano+roll_dice(d12)+roll_dice(d12);
+            cout<< getNome()<<" atacou todos os heróis, causando "<<roll_saver<<" de dano! \n\n";
+        }
+        void voo()
+        {
+            roll_saver = roll_dice(coin);
+            cout<< getNome()<<" voou para longe e ficará invunerável por "<<roll_saver<<" rodadas! \n\n";
+        }
+
+    };
 
 class Evento_Randomico
 {
 unsigned int mod_sala;
-unsigned int roll_saver;
 unsigned int points;
 
 public:

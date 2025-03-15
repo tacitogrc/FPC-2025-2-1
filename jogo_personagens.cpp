@@ -4,9 +4,6 @@
 #include <cmath> // Include cmath for floor function
 
 // Define dice constants
-const int d10 = 10;
-const int d6 = 6;
-const int d20 = 20;
 
 #define coin 2
 #define d4 4
